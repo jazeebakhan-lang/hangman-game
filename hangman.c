@@ -1,17 +1,25 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
+char *words[] = {"hello", "cards", "python", "coding", "flowers", "headphone", "keyboard", "games", "dublin", "college"};
 int main (){
 
-    char word [] = "hello";
-    int length = strlen (word);
     char guessed [10];
     int i;
     int wrong = 0;
     char guess;
     char playAgain = 'x';
 
+    srand(time(NULL));
+
+
     while (playAgain != 'n'){
+
+    int randomIndex = rand() % 10;
+    char *word = words[randomIndex];
+    int length = strlen (word);
 
       wrong = 0;
 
@@ -104,8 +112,10 @@ int won = 1;
 
  }
  if (won == 1) {
-    printf("You win!!");
-    return 0;
+    printf("You win!! the word was %s\n", word);
+    printf("play again? y/n: \n");
+    scanf(" %c", &playAgain);
+    break;
 }
 
 }
